@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SAT Study Plan </title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAT Study Plan</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>✨ SAT Study Plan ✨</h1>
-        <p>Target: <span class="gold">1500+</span> | Current: <span class="gold">1420</span></p>
+  <div class="container">
+    <h1 class="header">Sanhvi's SAT Study Plan</h1>
 
-        <div id="study-plan">
-            <!-- Week 1 -->
-            <h2>📅 Week 1: Diagnose & Build Routine</h2>
-            <label><input type="checkbox" class="task"> Take a full-length practice test</label>
-            <label><input type="checkbox" class="task"> 2 reading passages + 1 writing section</label>
-            <label><input type="checkbox" class="task"> 30 min grammar review</label>
-            <label><input type="checkbox" class="task"> 1 hour math practice</label>
-            <label><input type="checkbox" class="task"> Review mistakes from practice test</label>
-
-            <!-- Week 2 -->
-            <h2>🔥 Week 2: Intensive Reading & Grammar</h2>
-            <label><input type="checkbox" class="task"> 3 timed reading passages</label>
-            <label><input type="checkbox" class="task"> 1 hour math focus</label>
-            <label><input type="checkbox" class="task"> Full timed writing section</label>
-            <label><input type="checkbox" class="task"> Grammar drills</label>
-
-            <!-- Week 3 -->
-            <h2>⚡ Week 3: Speed & Accuracy</h2>
-            <label><input type="checkbox" class="task"> Full timed reading section</label>
-            <label><input type="checkbox" class="task"> Timed writing section</label>
-            <label><input type="checkbox" class="task"> 1-hour math session</label>
-            <label><input type="checkbox" class="task"> Analyze mistakes</label>
-
-            <!-- Week 4 -->
-            <h2>💯 Week 4: Full-Length Tests</h2>
-            <label><input type="checkbox" class="task"> Take 2 full-length tests</label>
-            <label><input type="checkbox" class="task"> Timed reading practice</label>
-            <label><input type="checkbox" class="task"> Speed drills</label>
-
-            <!-- Final Week -->
-            <h2>✨ Final Week: Review & Confidence</h2>
-            <label><input type="checkbox" class="task"> Light grammar & math review</label>
-            <label><input type="checkbox" class="task"> 2-3 timed sections daily</label>
-            <label><input type="checkbox" class="task"> Rest & Relax</label>
-        </div>
-
-        <!-- Timer Section -->
-        <h2>⏳ Study Timer</h2>
-        <div class="timer">
-            <span id="time">25:00</span>
-            <button id="start">Start</button>
-            <button id="reset">Reset</button>
-        </div>
+    <!-- Cute Motivational Message -->
+    <div class="motivation">
+      <p>"You’re not just studying, you’re building your future! 💪 Keep going!"</p>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Weekly Goals Section -->
+    <div class="weekly-goals">
+      <h2>Week 1 Goals: Focus on English 📚 (with some math)</h2>
+      <ul>
+        <li>1 hour of Reading Comprehension</li>
+        <li>30 minutes of Vocabulary Review</li>
+        <li>30 minutes of Math practice (start simple!)</li>
+        <li>Review English strategies & tips</li>
+      </ul>
+    </div>
+
+    <!-- Daily Goals Section -->
+    <div class="goals">
+      <h2>Daily Goals</h2>
+      <div class="goal-item">
+        <input type="checkbox" id="goal1">
+        <label for="goal1">Math Practice</label>
+      </div>
+      <div class="goal-item">
+        <input type="checkbox" id="goal2">
+        <label for="goal2">Reading Comprehension</label>
+      </div>
+      <div class="goal-item">
+        <input type="checkbox" id="goal3">
+        <label for="goal3">Vocabulary Review</label>
+      </div>
+    </div>
+
+    <!-- Timer for Practice -->
+    <div class="timer">
+      <h2>Time Your Focus ⏱️</h2>
+      <label for="timeSelect">Select Time (minutes): </label>
+      <input type="number" id="timeSelect" value="25" min="1" max="60">
+      <p id="timerDisplay">25:00</p>
+      <button id="startTimer">Start Timer</button>
+      <button id="resetTimer">Reset Timer</button>
+    </div>
+
+    <!-- Progress Bar Section -->
+    <div class="progress-section">
+      <h2>Progress</h2>
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Reset Weekly Button -->
+    <button class="reset-button">Reset Weekly Goals</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
