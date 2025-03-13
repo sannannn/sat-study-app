@@ -1,0 +1,52 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const checkboxes = document.querySelectorAll(".task");
+
+    // Save checkmarks in local storage
+    checkboxes.forEach((checkbox, index) => {
+        checkbox.checked = localStorage.getItem(`task-${index}`) === "true";
+        
+        checkbox.addEventListener("change", () => {
+            localStorage.setItem(`task-${index}`, checkbox.checked);
+        });
+    });
+
+    // Timer logic
+    let timer;
+    let timeLeft = 25 * 60;
+    let isRunning = false;
+    const timeDisplay = document.getElementById("time");
+    const startBtn = document.getElementById("start");
+    const resetBtn = document.getElementById("reset");
+
+    function updateTimer() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timeDisplay.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    }
+
+    function startTimer() {
+        if (!isRunning) {
+            isRunning = true;
+            timer = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimer();
+                } else {
+                    clearInterval(timer);
+                    isRunning = false;
+                }
+            }, 1000);
+        }
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        isRunning = false;
+        timeLeft = 25 * 60;
+        updateTimer();
+    }
+
+    startBtn.addEventListener("click", startTimer);
+    resetBtn.addEventListener("click", resetTimer);
+    updateTimer();
+});
