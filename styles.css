@@ -1,6 +1,6 @@
 body {
-  background-color: #1a1a1a;
-  color: #f2b0d7; /* Pink text */
+  background-color: #f1e0f6; /* Soft pink background */
+  color: #9b4d7e; /* Dark pink text */
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -14,34 +14,37 @@ body {
 
 .header {
   text-align: center;
-  color: #f2b0d7; /* Pink header */
+  color: #9b4d7e;
 }
 
 .motivation {
   text-align: center;
   font-size: 20px;
   margin-top: 10px;
-  color: #f2b0d7;
+  color: #9b4d7e;
   font-weight: bold;
 }
 
-h2 {
-  color: #f2b0d7;
+h2, h3 {
+  color: #9b4d7e;
 }
 
 h3 {
-  color: #f2b0d7;
-  font-size: 18px;
+  font-size: 22px;
 }
 
-.weekly-goals ul {
+.weekly-goals {
+  margin-top: 20px;
+}
+
+.week-goals ul {
   list-style-type: none;
   padding: 0;
 }
 
-.weekly-goals li {
-  background-color: #333;
-  color: #f2b0d7;
+.week-goals li {
+  background-color: #fff;
+  color: #9b4d7e;
   margin: 5px 0;
   padding: 10px;
   border-radius: 5px;
@@ -52,8 +55,8 @@ h3 {
 }
 
 .goal-item {
-  background-color: #333;
-  color: #f2b0d7;
+  background-color: #fff;
+  color: #9b4d7e;
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 5px;
@@ -74,8 +77,8 @@ input[type="checkbox"] {
 }
 
 button {
-  background-color: #f2b0d7;
-  color: #333;
+  background-color: #9b4d7e;
+  color: #fff;
   font-size: 18px;
   padding: 10px;
   border: none;
@@ -85,7 +88,7 @@ button {
 }
 
 button:hover {
-  background-color: #f285d5;
+  background-color: #7c3655;
 }
 
 .progress-section {
@@ -95,7 +98,7 @@ button:hover {
 .progress-bar {
   width: 0;
   height: 30px;
-  background-color: #f2b0d7;
+  background-color: #9b4d7e;
   color: white;
   text-align: center;
   line-height: 30px;
@@ -104,8 +107,8 @@ button:hover {
 }
 
 .reset-button {
-  background-color: #f2b0d7;
-  color: #333;
+  background-color: #9b4d7e;
+  color: #fff;
   font-size: 18px;
   padding: 10px;
   border: none;
@@ -115,5 +118,5 @@ button:hover {
 }
 
 .reset-button:hover {
-  background-color: #f285d5;
+  background-color: #7c3655;
 }
