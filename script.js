@@ -1,52 +1,57 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const checkboxes = document.querySelectorAll(".task");
+// Daily goals progress
+const dailyGoals = document.querySelectorAll('.goal-item input');
+const progressBar = document.querySelector('.progress-bar');
 
-    // Save checkmarks in local storage
-    checkboxes.forEach((checkbox, index) => {
-        checkbox.checked = localStorage.getItem(`task-${index}`) === "true";
-        
-        checkbox.addEventListener("change", () => {
-            localStorage.setItem(`task-${index}`, checkbox.checked);
-        });
-    });
+function updateProgress() {
+  const checkedGoals = Array.from(dailyGoals).filter(goal => goal.checked).length;
+  const totalGoals = dailyGoals.length;
+  const progress = (checkedGoals / totalGoals) * 100;
 
-    // Timer logic
-    let timer;
-    let timeLeft = 25 * 60;
-    let isRunning = false;
-    const timeDisplay = document.getElementById("time");
-    const startBtn = document.getElementById("start");
-    const resetBtn = document.getElementById("reset");
+  progressBar.style.width = progress + '%';
+  progressBar.innerText = `${Math.round(progress)}%`;
+}
 
-    function updateTimer() {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        timeDisplay.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-    }
+dailyGoals.forEach(goal => goal.addEventListener('change', updateProgress));
 
-    function startTimer() {
-        if (!isRunning) {
-            isRunning = true;
-            timer = setInterval(() => {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    updateTimer();
-                } else {
-                    clearInterval(timer);
-                    isRunning = false;
-                }
-            }, 1000);
-        }
-    }
+updateProgress();
 
-    function resetTimer() {
+// Timer functionality
+let timer;
+let timerRunning = false;
+
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+}
+
+document.getElementById("startTimer").addEventListener("click", function() {
+  const timeSelect = document.getElementById("timeSelect").value;
+  let timeLeft = timeSelect * 60; // Convert to seconds
+  
+  if (!timerRunning) {
+    timer = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timerDisplay").textContent = formatTime(timeLeft);
+      if (timeLeft === 0) {
         clearInterval(timer);
-        isRunning = false;
-        timeLeft = 25 * 60;
-        updateTimer();
-    }
+        timerRunning = false;
+        alert("Time's up! Take a break or switch tasks!");
+      }
+    }, 1000);
+    timerRunning = true;
+  }
+});
 
-    startBtn.addEventListener("click", startTimer);
-    resetBtn.addEventListener("click", resetTimer);
-    updateTimer();
+document.getElementById("resetTimer").addEventListener("click", function() {
+  clearInterval(timer);
+  timerRunning = false;
+  document.getElementById("timerDisplay").textContent = "00:00";
+});
+
+// Weekly reset functionality
+const resetButton = document.querySelector('.reset-button');
+resetButton.addEventListener('click', () => {
+  dailyGoals.forEach(goal => goal.checked = false);
+  updateProgress();
 });
